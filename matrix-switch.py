@@ -17,10 +17,10 @@ user_outp = str(user_outp)
 user_inp = str(user_inp)
     
 if len(user_inp) == 1:
-    user_inp = '0' + str(user_inp)
+    user_inp = '0' + user_inp
 
 if len(user_outp) == 1:
-    user_outp = '0' + str(user_outp)
+    user_outp = '0' + user_outp
 
 commandstring = '@T' + user_outp + user_inp + '#'
 commandstring = commandstring.encode()
