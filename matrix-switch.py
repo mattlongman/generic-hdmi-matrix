@@ -6,8 +6,13 @@ ip = '192.168.1.168'
 port = 5000
 buffer = 8
 
-user_outp = int(input("Which output? ")) - 1
-user_inp = int(input("Which input? ")) - 1
+#if arguments are provided, don't prompt for input, else prompt user for output/input numbers.
+if len(sys.argv) > 2:
+    user_outp = int(sys.argv[1]) - 1
+    user_inp = int(sys.argv[2]) - 1
+else:
+    user_outp = int(input("Which output? ")) - 1
+    user_inp = int(input("Which input? ")) - 1
 
 #Outputs 1-4 use 00-03. Ouputs 5-8 use 11-14.
 if user_outp > 3:
@@ -30,5 +35,7 @@ packet.connect((ip, port))
 packet.send(commandstring)
 data = packet.recv(buffer)
 packet.close()
- 
-print("received data:", data)
+
+#only print output if a user is manually running script.
+if len(sys.argv) < 3:
+    print("received data:", data)
